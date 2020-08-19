@@ -52,6 +52,7 @@ public class BaseTest {
         screenShot=new ScreenShot(getDriver(), extentTest);
 
         getDriver().get(ConfigReader.readProperty("url", propertyPath));
+        getDriver().manage().window().maximize();
     }
     @AfterMethod (alwaysRun = true)
     public void tearDown(ITestResult result){
@@ -67,6 +68,8 @@ public class BaseTest {
 
 
     private void initializeDriver(String browser){
+        if(getDriver() !=null)
+            return;
         WebDriver driver = null;
         switch (browser){
             case "chrome":
@@ -86,10 +89,7 @@ public class BaseTest {
     }
     public WebDriver getDriver(){
         WebDriver driver = drivers.get();//gets driver from ThreadLocal...
-      if(driver ==null){
-          System.out.println("driver object was null");
-      }
-      return driver;
+        return driver;
 
     }
 
