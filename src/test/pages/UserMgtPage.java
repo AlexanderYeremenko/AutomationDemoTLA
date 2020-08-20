@@ -23,10 +23,12 @@ public class UserMgtPage extends BasePage {
 
    public String[] registrationFormFields = {"Firstname", "Lastname", "Email", "Phonenumber", "Select-role"};
 
-public WebElement findById(String id){
-    return driver.findElement(By.id(id));
-}
+   public WebElement findById(String id){
+   return driver.findElement(By.id(id));
+   }
 
+    @FindBy(xpath = "//table[@id='list-table']/tbody/tr")
+    public WebElement tableRow;
 
 
 }
